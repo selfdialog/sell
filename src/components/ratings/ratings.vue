@@ -73,10 +73,10 @@
 </template>
 
 <script>
-  import Star from 'components/star/star'
-  import RatingSelect from 'components/rating-select/rating-select'
-  import Split from 'components/split/split'
-  import ratingMixin from 'common/mixins/rating'
+  import Star from '@/components/star/star'
+  import RatingSelect from '@/components/rating-select/rating-select'
+  import Split from '@/components/split/split'
+  import ratingMixin from '@/common/mixins/rating'
   import {getRatings} from "@/api";
   import moment from 'moment'
 
