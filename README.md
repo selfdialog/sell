@@ -1,4 +1,4 @@
-# sell
+# sell (仿饿了么的vue项目)
 
 ## Project setup
 ```
