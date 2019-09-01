@@ -70,6 +70,7 @@
         },
         methods: {
             onScroll(pos) {
+                // eslint-disable-next-line no-console
                 const tabBarWidth = this.$refs.tabBar.$el.clientWidth
                 const slideWidth = this.$refs.slide.slide.scrollerWidth
                 const transform = -pos.x / slideWidth * tabBarWidth
