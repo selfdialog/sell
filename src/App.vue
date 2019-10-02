@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    import qs from 'query-string'
     import VHeader from 'components/v-header/v-header'
     import Tab from 'components/tab/tab'
     import Goods from 'components/goods/goods'
@@ -24,7 +25,7 @@
         data() {
             return {
                 seller: {
-                    // id: qs.parse(location.search).id
+                    id: qs.parse(location.search).id
                 }
             }
         },
