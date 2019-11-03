@@ -150,12 +150,11 @@
                 e.stopPropagation()
             },
             drop(el) {
-                for (let i = 0; i < this.balls.length; i++) {
-                    const ball = this.balls[i]
+                for (let ball of this.balls) {
                     if (!ball.show) {
-                        ball.show = true
-                        ball.el = el
-                        this.dropBalls.push(ball)
+                        ball.show = true;
+                        ball.el = el;
+                        this.dropBalls.push(ball);
                         return
                     }
                 }
@@ -163,7 +162,10 @@
             beforeDrop(el) {
                 const ball = this.dropBalls[this.dropBalls.length - 1]
                 const rect = ball.el.getBoundingClientRect()
+                //掉落之前是将小球从购物车挪到每个商品的+加号位置上
+                //x轴方向是个正值
                 const x = rect.left - 32
+                //y轴方向是个负值
                 const y = -(window.innerHeight - rect.top - 22)
                 el.style.display = ''
                 el.style.transform = el.style.webkitTransform = `translate3d(0,${y}px,0)`
