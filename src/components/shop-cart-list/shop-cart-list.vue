@@ -77,7 +77,7 @@
         this.hide()
       },
       empty() {
-        this.dialogComp = this.$createDialog({
+        this.$createDialog({
           type: 'confirm',
           content: '清空购物车？',
           $events: {
@@ -88,8 +88,7 @@
               this.hide()
             }
           }
-        })
-        this.dialogComp.show()
+        }).show()
       }
     },
     components: {

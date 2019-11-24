@@ -39,9 +39,10 @@
                 >
                     <ul>
                         <li
-                            v-for="food in good.foods"
-                            :key="food.name"
-                            class="food-item"
+                                @click="selectFood(food)"
+                                v-for="food in good.foods"
+                                :key="food.name"
+                                class="food-item"
                         >
                             <div class="icon">
                                 <img width="57" height="57" :src="food.icon">
@@ -81,7 +82,6 @@
     import {getGoods} from "api";
     import CartControl from 'components/cart-control/cart-control'
     import ShopCart from 'components/shop-cart/shop-cart'
-    // import Food from 'components/food/food'
     import SupportIco from 'components/support-ico/support-ico'
     import Bubble from 'components/bubble/bubble'
 
@@ -138,23 +138,46 @@
             }
         },
         methods: {
+            selectFood(food) {
+                this.selectedFood = food;
+                this._showFood()
+            },
             fetch() {
-                getGoods({
-                    id: this.seller.id
-                }).then((goods) => {
-                    this.goods = goods
-                })
+                if (!this.fetched) {
+                    this.fetched = true
+                    getGoods({
+                        id: this.seller.id
+                    }).then((goods) => {
+                        this.goods = goods
+                    })
+                }
+
             },
             onAdd(el) {
                 this.$refs.shopCart.drop(el);
-            }
+            },
+            _showFood() {
+                this.foodComp = this.foodComp || this.$createFood({
+                    $props: {
+                        food: 'selectedFood'
+                    },
+                    /*$events: {
+                        add: (target) => {
+                            this.shopCartStickyComp.drop(target)
+                        },
+                        leave: () => {
+                            this._hideShopCartSticky()
+                        }
+                    }*/
+                })
+                this.foodComp.show()
+            },
         },
         components: {
             Bubble,
             SupportIco,
             CartControl,
             ShopCart,
-            // Food
         }
     }
 </script>
