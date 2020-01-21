@@ -21,14 +21,14 @@
                         <div class="price">
                             <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                         </div>
-                        <!--<div class="cart-control-wrapper">
+                        <div class="cart-control-wrapper">
                           <cart-control @add="addFood" :food="food"></cart-control>
                         </div>
                         <transition name="fade">
-                          <div @click="addFirst" class="buy" v-show="!food.count">
+                          <div @click.stop="addFirst" class="buy" v-show="!food.count">
                             加入购物车
                           </div>
-                        </transition>-->
+                        </transition>
                     </div>
                     <split v-show="food.info"></split>
                     <div class="info" v-show="food.info">
@@ -44,7 +44,7 @@
 
 <script type="text/ecmascript-6">
     // import moment from 'moment'
-    // import CartControl from 'components/cart-control/cart-control'
+    import CartControl from 'components/cart-control/cart-control'
     // import RatingSelect from 'components/rating-select/rating-select'
     import Split from 'components/split/split'
     // import ratingMixin from 'common/mixins/rating'
@@ -77,6 +77,7 @@
             }
         },
         created() {
+            
             this.$on(EVENT_SHOW, () => {
                 this.$nextTick(() => {
                     this.$refs.scroll.refresh()
@@ -96,7 +97,8 @@
             },
         },
         components: {
-            Split
+            Split,
+            CartControl
         }
     }
 </script>

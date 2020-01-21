@@ -141,6 +141,7 @@
             selectFood(food) {
                 this.selectedFood = food;
                 this._showFood()
+                this._showShopCartSticky();
             },
             fetch() {
                 if (!this.fetched) {
@@ -161,17 +162,31 @@
                     $props: {
                         food: 'selectedFood'
                     },
-                    /*$events: {
-                        add: (target) => {
+                    $events: {
+                        /*add: (target) => {
                             this.shopCartStickyComp.drop(target)
-                        },
+                        },*/
                         leave: () => {
                             this._hideShopCartSticky()
                         }
-                    }*/
+                    }
                 })
                 this.foodComp.show()
             },
+            _showShopCartSticky() {
+                this.shopCartStickyComp = this.shopCartStickyComp || this.$createShopCartSticky({
+                    $prop: {
+                        selectFoods: 'selectFoods',
+                        deliveryPrice: this.seller.deliveryPrice,
+                        minPrice: this.seller.minPrice,
+                        fold: true
+                    }
+                })
+                this.shopCartStickyComp.show();
+            },
+            _hideShopCartSticky() {
+                this.shopCartStickyComp.hide()
+            }
         },
         components: {
             Bubble,
