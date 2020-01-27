@@ -1,6 +1,5 @@
 <template>
-  <div>i am ratings</div>
-  <!--<cube-scroll ref="scroll" class="ratings" :options="scrollOptions">
+  <cube-scroll ref="scroll" class="ratings" :options="scrollOptions">
     <div class="ratings-content">
       <div class="overview">
         <div class="overview-left">
@@ -32,6 +31,7 @@
         :selectType="selectType"
         :onlyContent="onlyContent"
         :ratings="ratings"
+        v-if="ratings.length"
       >
       </rating-select>
       <div class="rating-wrapper">
@@ -69,26 +69,26 @@
         </ul>
       </div>
     </div>
-  </cube-scroll>-->
+  </cube-scroll>
 </template>
 
 <script>
-  // import Star from '@/components/star/star'
-  // import RatingSelect from '@/components/rating-select/rating-select'
-  // import Split from '@/components/split/split'
-  // import ratingMixin from '@/common/mixins/rating'
-  // import {getRatings} from "@/api";
-  // import moment from 'moment'
+  import Star from '@/components/star/star'
+  import RatingSelect from '@/components/rating-select/rating-select'
+  import Split from '@/components/split/split'
+  import ratingMixin from '@/common/mixins/rating'
+  import {getRatings} from "@/api";
+  import moment from 'moment'
 
   export default {
     name: 'ratings',
-    // mixins: [ratingMixin],
+    mixins: [ratingMixin],
     props: {
       data: {
         type: Object
       }
     },
-    /*data () {
+    data () {
       return {
         ratings: [],
         scrollOptions: {
@@ -128,7 +128,7 @@
           this.$refs.scroll.refresh()
         })
       }
-    }*/
+    }
   }
 </script>
 

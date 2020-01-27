@@ -12,7 +12,9 @@
     "core-js": "^2.6.9",
     "cube-ui": "~1.12.32",
     "vue": "^2.6.10",
-    "query-string": "^6.8.3"
+    "query-string": "^6.8.3",
+    "moment": "^2.24.0",
+    "good-storage": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

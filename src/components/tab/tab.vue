@@ -29,6 +29,8 @@
 </template>
 
 <script>
+    import {saveToLocal, loadFromLocal} from 'common/js/storage'
+
     export default {
         name: 'tab',
         props: {
@@ -41,6 +43,10 @@
             initialIndex: {
                 type: Number,
                 default: 0
+            },
+            id: {
+                type: String,
+                default: ''
             }
         },
         data() {
@@ -80,7 +86,13 @@
                 this.index = current
                 const instance = this.$refs.component[current]
                 instance.fetch && instance.fetch()
+                // 缓存
+                saveToLocal(this.id, 'index', this.index)
             }
+        },
+        created() {
+            // 缓存tab索引
+            this.index = loadFromLocal(this.id, 'index', this.initialIndex)
         }
     }
 </script>

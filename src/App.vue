@@ -2,7 +2,7 @@
     <div id="app">
         <v-header :seller="seller"></v-header>
         <div class="tab-wrapper">
-            <tab :tabs="tabs"></tab>
+            <tab :tabs="tabs" :id="seller.id"></tab>
         </div>
     </div>
 </template>
@@ -61,9 +61,9 @@
         },
         methods: {
             _getSeller() {
-                getSeller().then(seller => {
-                    // eslint-disable-next-line no-console
-                    console.log(seller);
+                getSeller({
+                    id: this.seller.id
+                }).then(seller => {
                     this.seller = seller;
                 })
             }

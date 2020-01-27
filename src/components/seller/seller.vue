@@ -1,6 +1,5 @@
 <template>
-  <div>i am seller</div>
-    <!--<cube-scroll class="seller" :options="sellerScrollOptions">
+    <cube-scroll class="seller" :options="sellerScrollOptions">
         <div class="seller-content">
             <div class="overview">
                 <h1 class="title">{{seller.name}}</h1>
@@ -79,18 +78,18 @@
                 </ul>
             </div>
         </div>
-    </cube-scroll>-->
+    </cube-scroll>
 </template>
 
 <script>
-    // import {saveToLocal, loadFromLocal} from 'common/js/storage'
-    // import Star from 'components/star/star'
-    // import Split from 'components/split/split'
-    // import SupportIco from 'components/support-ico/support-ico'
+    import {saveToLocal, loadFromLocal} from 'common/js/storage'
+    import Star from 'components/star/star'
+    import Split from 'components/split/split'
+    import SupportIco from 'components/support-ico/support-ico'
 
     export default {
         name: 'seller',
-        /*props: {
+        props: {
             data: {
                 type: Object,
                 default() {
@@ -133,12 +132,12 @@
             SupportIco,
             Star,
             Split
-        }*/
+        }
     }
 </script>
 
 <style lang="stylus" scoped>
-    /*@import "~common/stylus/variable"
+    @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
 
     .seller
@@ -258,5 +257,5 @@
           line-height: 16px
           font-size: $fontsize-small
           &:last-child
-            border-none()*/
+            border-none()
 </style>
